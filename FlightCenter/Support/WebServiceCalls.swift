@@ -5,6 +5,7 @@
 //  Created by Ragini pasaru on 17/01/18.
 //
 
+
 import UIKit
 import CoreData
 import Alamofire
@@ -14,16 +15,16 @@ import SVProgressHUD
 
 let kBasePath = "https://glacial-caverns-15124.herokuapp.com/flights/all"
 
-let rootControll = UIApplication.shared.keyWindow?.rootViewController
+// let rootControll = UIApplication.shared.keyWindow?.rootViewController
 
 typealias CompletionBlock = (_ json : NSDictionary?, _ successed : Bool?, _ errorCode : Int?) -> ()
-typealias CartCountCompletionBlock = (_ count : String?, _ successed : Bool?, _ errorCode : Int?) -> ()
+//typealias CartCountCompletionBlock = (_ count : String?, _ successed : Bool?, _ errorCode : Int?) -> ()
 
 class WebServiceCalls: NSObject {
     
     typealias CompletionBlock = (_ error: NSError?, _ response : AnyObject?) -> Void
-    static var completionBlock: CompletionBlock?
-    static var isLoaded: Bool = false
+    //static var completionBlock: CompletionBlock?
+    //static var isLoaded: Bool = false
     
     // MARK: Master
     
@@ -33,14 +34,14 @@ class WebServiceCalls: NSObject {
         let webservice = String(format: "%@",API_URL)
         
         if CommonInstance.sharedInstance.hasConnectivity() == true {
-            if options != nil {
+            //if options != nil {
 //                if let showHud = (options?.value(forKey: "showProgres") as AnyObject).boolValue {
 //                    if showHud == true {
 //                        CommonInstance.sharedInstance.showHUD(show: true)
 //                    }
 //                }
                 SVConstants.showHUD()
-            }
+           // }
             
             do {
                 let jsonData = try JSONSerialization.data(withJSONObject: params, options: JSONSerialization.WritingOptions.prettyPrinted)
@@ -56,13 +57,13 @@ class WebServiceCalls: NSObject {
             Alamofire.request(webservice, method: method, parameters: params, headers: header).responseJSON { (response) in
                 switch response.result {
                 case .success(let resultValue):
-                    CommonInstance.sharedInstance.showHUD(show: false)
+//                    CommonInstance.sharedInstance.showHUD(show: false)
                     SVConstants.hideHUD()
                     onSuccess!(nil,resultValue as AnyObject?)
                 case .failure(let error):
                     SVConstants.hideHUD()
 
-                    CommonInstance.sharedInstance.showHUD(show: false)
+//                    CommonInstance.sharedInstance.showHUD(show: false)
                     print("Error - \(error.localizedDescription)")
                     onSuccess!(error as NSError?,nil)
                     break
@@ -76,11 +77,11 @@ class WebServiceCalls: NSObject {
         }
     }
     
-    static func displayIndicator()
-    {
-        if !isLoaded
-        {
-            CommonInstance.sharedInstance.showHUD(show: true)
-        }
-    }
+//    static func displayIndicator()
+//    {
+//        if !isLoaded
+//        {
+//            CommonInstance.sharedInstance.showHUD(show: true)
+//        }
+//    }
 }

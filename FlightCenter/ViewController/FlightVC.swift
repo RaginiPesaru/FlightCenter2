@@ -27,7 +27,7 @@ class FlightVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     @IBOutlet weak var tableView: UITableView!
     
     var expandedSectionHeaderNumber: Int = -1
-    var expandedSectionHeader: UITableViewHeaderFooterView!
+    var expandedSectionHader: UITableViewHeaderFooterView!
     var arrayFlightDetails : [Any] = []
     
     override func viewDidLoad() {
