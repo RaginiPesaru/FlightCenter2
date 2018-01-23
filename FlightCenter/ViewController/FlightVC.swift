@@ -153,7 +153,7 @@ class FlightVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
-    // MARK: - Expand / Collapse Methods
+    // MARK: - Expand / Collapse Methodss
     
     @objc func sectionHeaderWasTouched(_ sender: UITapGestureRecognizer) {
         let headerView = sender.view as! UITableViewHeaderFooterView
